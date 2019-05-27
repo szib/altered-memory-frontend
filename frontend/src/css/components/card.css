@@ -1,0 +1,13 @@
+.card {
+  @apply bg-orange-400 text-gray-800;
+  width: 100%;
+  transition: all .4s ease;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-blend-mode: normal;
+}
+
+.card:hover {
+  @apply bg-orange-500;
+}

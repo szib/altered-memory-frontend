@@ -1,0 +1,9 @@
+@import 'components/board.css';
+@import 'components/card.css';
+@import 'components/button.css';
+
+/* IMPORT ALL CSS BEFORE TAILWIND */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
