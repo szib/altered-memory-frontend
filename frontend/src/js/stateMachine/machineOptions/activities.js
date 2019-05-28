@@ -1,11 +1,10 @@
-const ticking = (context, activity) => {
-  // Start the beeping activity
+import { updateTimer } from '../../UI';
+
+const ticking = (context) => {
   const interval = setInterval(() => {
     context.time += 1;
-    console.log(`Elapsed time: ${context.time} sec`);
+    updateTimer(context.time);
   }, context.timerInterval);
-
-  // Return a function that stops the beeping activity
   return () => clearInterval(interval);
 };
 
