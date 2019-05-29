@@ -1,5 +1,5 @@
 export default {
-  score: 0,
+  provisionalScore: 110,
   turn: 0,
   time: 0,
   cards: [],

@@ -2,10 +2,14 @@ import { cardImages, backImage } from './images';
 
 let service;
 
-
 export const updateTimer = (time) => {
   const timerEl = document.querySelector('#timer');
   timerEl.textContent = time;
+};
+
+export const updateScore = (score) => {
+  const scoreEl = document.querySelector('#score');
+  scoreEl.textContent = score;
 };
 
 export const initNavbar = () => {
@@ -25,19 +29,19 @@ export const initNavbar = () => {
     console.log('service.state.value :', service.state.value);
   });
 
-  const peekBtn = navBarEl.querySelector('#peekBtn');
-  peekBtn.addEventListener('click', (e) => {
-    // const cards = service.state.context.cards.map(card => card.kind);
-    const cards = service.state.context.cards.map((card) => {
-      if (card.kind != 0) {
-        card.found = true;
-      }
-      return card;
-    });
-    console.table(cards);
-    service.state.context.cards = cards;
-    renderCards();
-  });
+  // const peekBtn = navBarEl.querySelector('#peekBtn');
+  // peekBtn.addEventListener('click', (e) => {
+  //   // const cards = service.state.context.cards.map(card => card.kind);
+  //   const cards = service.state.context.cards.map((card) => {
+  //     if (card.kind != 0) {
+  //       card.found = true;
+  //     }
+  //     return card;
+  //   });
+  //   console.table(cards);
+  //   service.state.context.cards = cards;
+  //   renderCards();
+  // });
 };
 
 const createCard = (card) => {
@@ -56,19 +60,18 @@ const createCard = (card) => {
 };
 
 const click = (e) => {
-  console.log(e.target);
   service.send('CLICK_ON_CARD', { cardId: e.target.dataset.id });
-  console.log('service.state.value :', service.state.value);
 };
 
-export const renderCards = () => {
+export const renderCards = (cards) => {
   const board = document.querySelector('#board');
   board.innerHTML = '';
-  const { cards } = service.state.context;
-  for (let index = 0; index < cards.length; index++) {
-    const card = createCard(cards[index]);
-    card.addEventListener('click', click);
-    board.appendChild(card);
+  if (cards.length > 0) {
+    for (let index = 0; index < cards.length; index++) {
+      const card = createCard(cards[index]);
+      card.addEventListener('click', click);
+      board.appendChild(card);
+    }
   }
 };
 

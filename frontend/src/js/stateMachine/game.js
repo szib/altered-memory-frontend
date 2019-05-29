@@ -1,40 +1,48 @@
 const gameStates = {
-  initial: 's0',
+  id: 'game',
+  initial: 'init',
   states: {
-    s0: {
-      onEntry: ['log', 'incrementTurn', 'renderBoard'],
+    init: {
+      onEntry: ['renderBoard', 'renderScore'],
       on: {
-        CLICK_ON_CARD: 's1',
+        '': 's0',
       },
     },
+    s0: {
+      onEntry: ['logEvent', 'incrementTurn'],
+      on: {
+        CLICK_ON_CARD: {
+          target: 's1',
+          cond: 'selectable',
+        },
+      },
+      onExit: ['selectCard', 'setFaceUp', 'renderBoard'],
+    },
     s1: {
-      onEntry: ['log', 'selectCard', 'renderBoard'],
+      onEntry: ['logEvent'],
       on: {
         CLICK_ON_CARD: {
           target: 's2',
           cond: 'selectable',
         },
       },
+      onExit: ['selectCard', 'setFaceUp', 'renderBoard'],
     },
     s2: {
-      onEntry: ['log', 'selectCard', 'setFaceUp', 'renderBoard'],
-      after: {
-        1000: 'endTurn',
-      },
-      onExit: ['deselectCards', 'setFaceUp'],
-    },
-    endTurn: {
-      onEntry: ['log'],
+      onEntry: ['logEvent', 'checkMatch'],
       on: {
-        '': [
-          { target: 'endGame', cond: 'allFound' },
-          { target: 's0' },
-        ],
+        CLICK_ON_CARD: 's0',
       },
+      after: {
+        10: { target: 'endGame', cond: 'allFound' },
+        20: { target: 's0', cond: 'isMatched' },
+        1000: { target: 's0' },
+      },
+      onExit: ['logCards', 'logContext', 'deselectCards', 'setFaceUp', 'renderScore', 'renderBoard'],
     },
     endGame: {
+      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'renderBoard', 'logEnd'],
       type: 'final',
-      onEntry: ['log', 'logEnd'],
     },
   },
 };

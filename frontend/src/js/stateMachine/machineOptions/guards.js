@@ -4,12 +4,18 @@ const selectable = (context, event) => {
   return card.selected === false && card.faceUp === false;
 };
 
+const isMatched = (context) => {
+  const selectedCards = context.cards.filter(card => card.selected === true);
+  return selectedCards[0].kind === selectedCards[1].kind;
+};
+
 const allFound = context => context.cards
-  .filter(card => card.found === true).length === 16;
+  .filter(card => card.found === false).length === 0;
 
 const guards = {
   selectable,
   allFound,
+  isMatched,
 };
 
 export default guards;

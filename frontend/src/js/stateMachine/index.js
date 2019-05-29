@@ -10,7 +10,7 @@ const machineConfig = {
 
   states: {
     idle: {
-      onExit: ['resetContext'],
+      onEntry: ['resetContext', 'renderBoard'],
       on: {
         NEW_GAME: 'init',
       },
@@ -23,9 +23,9 @@ const machineConfig = {
     },
     running: {
       activities: ['ticking'],
-      onEntry: [],
       on: {
         QUIT_GAME: 'idle',
+        'done.state.game.running.endGame': 'idle',
       },
       ...gameStates,
     },
@@ -34,7 +34,5 @@ const machineConfig = {
 
 const gameMachine = Machine(machineConfig, machineOptions, initialContext);
 const gameService = interpret(gameMachine).start();
-// gameService.onTransition(render)
-
 
 export default gameService;

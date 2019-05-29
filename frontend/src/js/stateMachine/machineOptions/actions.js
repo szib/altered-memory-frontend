@@ -1,39 +1,22 @@
-import { renderCards } from '../../UI';
+import { renderCards, updateScore } from '../../UI';
 
 const incrementScore = (context) => {
   context.score += 1;
 };
 
 const incrementTurn = (context) => {
+  context.provisionalScore -= 10;
   context.turn += 1;
 };
 
 const selectCard = (context, event) => {
-  context.cards
-    .find(card => card.id === parseInt(event.cardId, 10))
-    .selected = true;
-};
-
-const isMatched = (cards) => {
-  const kinds = cards
-    .filter(card => card.selected === true)
-    .map(card => card.kind);
-  return kinds[0] === kinds[1];
+  const selectedCard = context.cards
+    .find(card => card.id === parseInt(event.cardId, 10));
+  if (selectedCard) selectedCard.selected = true;
 };
 
 const deselectCards = (context) => {
-  if (isMatched(context.cards)) {
-    context.cards.map((card) => {
-      if (card.selected) {
-        card.found = true;
-      }
-      return card;
-    });
-  }
-  context.cards.map((card) => {
-    card.selected = false;
-    return card;
-  });
+  context.cards.map(card => card.selected = false);
 };
 
 const setFaceUp = (context) => {
@@ -43,13 +26,28 @@ const setFaceUp = (context) => {
   });
 };
 
+const isMatch = (cards) => {
+  const selectedCards = cards.filter(card => card.selected === true);
+  return selectedCards[0].kind === selectedCards[1].kind;
+};
+
+const checkMatch = (context) => {
+  if (isMatch(context.cards)) {
+    context.score += context.provisionalScore;
+    context.provisionalScore = 110;
+    context.cards.map((c) => {
+      if (c.selected) c.found = true;
+      return c;
+    });
+  }
+};
+
 const initCards = (context) => {
   const cards = [];
   for (let idx = 0; idx < 16; idx += 1) {
     const card = {
       id: idx,
       kind: idx % 8,
-      image: `./images/card${idx % 8}.svg`,
       selected: false,
       faceUp: false,
       found: false,
@@ -69,16 +67,10 @@ const shuffleCards = (context) => {
   context.cards = cards;
 };
 
-const log = (context, event) => {
-  // eslint-disable-next-line no-console
-  console.log(`-------- Turn ${context.turn} --------`);
-  // eslint-disable-next-line no-console
-  console.log('context :', context);
-  // eslint-disable-next-line no-console
-  console.log('event :', event);
-  // eslint-disable-next-line no-console
-  console.log('--------------------------------------');
+const addTimeBonus = (context) => {
+  context.score = parseInt(context.score * (60 / context.time), 10);
 };
+
 
 const resetContext = (context) => {
   context.score = 0;
@@ -87,24 +79,45 @@ const resetContext = (context) => {
   context.timerInterval = 1000;
 };
 
-const renderBoard = () => {
-  renderCards();
+const renderScore = (context) => {
+  updateScore(context.score);
+};
+
+const renderBoard = (context) => {
+  renderCards(context.cards);
+};
+
+const logContext = (context, event) => {
+  console.log('context :', context);
+};
+
+const logEvent = (context, event) => {
+  console.log('event :', event);
 };
 
 const logEnd = () => {
   console.log('END 😎');
 };
 
+const logCards = (context) => {
+  console.table(context.cards);
+};
+
 export default {
   initCards,
   shuffleCards,
-  log,
   incrementScore,
   resetContext,
   renderBoard,
+  renderScore,
   selectCard,
+  checkMatch,
   setFaceUp,
   deselectCards,
   incrementTurn,
+  addTimeBonus,
+  logEvent,
+  logContext,
   logEnd,
+  logCards,
 };
