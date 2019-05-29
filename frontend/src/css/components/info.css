@@ -1,0 +1,8 @@
+.info {
+  @apply bg-orange-300;
+  
+  /* @apply flex; */
+  /* @apply flex-col; */
+  /* @apply justify-center; */
+}
+

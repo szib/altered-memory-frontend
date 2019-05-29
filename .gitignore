@@ -27,5 +27,6 @@ backend/storage/*
 backend/config/master.key
 
 */node_modules/*
+frontend/dist
 frontend/public/build
 frontend/yarn.lock
