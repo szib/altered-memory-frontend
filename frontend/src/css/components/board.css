@@ -1,5 +1,5 @@
 .board-wrapper {
-  @apply bg-gray-400;
+  @apply bg-gray-800;
   @apply w-full;
 
   @apply flex;
@@ -14,5 +14,5 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 1vh 1vh;
+  grid-gap: 2vh 2vh;
 }

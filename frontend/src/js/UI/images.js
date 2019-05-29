@@ -1,4 +1,4 @@
-import backImage from '../../images/back.jpg';
+import backImage from '../../images/back.svg';
 
 const importAll = (r) => {
   const images = {};

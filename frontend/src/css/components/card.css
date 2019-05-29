@@ -1,16 +1,20 @@
 .card {
-  @apply bg-orange-400 text-gray-800;
-  width: 20vh;
-  height: 20vh;
-  transition: all .4s ease;
+  @apply bg-orange-600 text-orange-200;
+  @apply shadow-lg;
 
   background-repeat: no-repeat;
   background-size: contain;
   background-blend-mode: normal;
+  
+  width: 20vh;
+  height: 20vh;
+  transition: all .4s ease;
 
   @apply cursor-pointer;
+
 }
 
 .card:hover {
   @apply bg-orange-500;
+  /* transform: scale(1.02); */
 }
