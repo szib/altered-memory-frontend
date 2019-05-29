@@ -1,0 +1,7 @@
+.navbar {
+  grid-area: navbar;
+  @apply bg-orange-600;
+
+  @apply flex flex-col justify-center;
+}
+

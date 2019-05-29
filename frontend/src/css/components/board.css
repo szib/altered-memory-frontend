@@ -1,10 +1,18 @@
-.board {
-  @apply w-screen;
-  @apply h-screen;
+.board-wrapper {
   @apply bg-gray-400;
-  @apply p-8;
+  @apply w-full;
+
+  @apply flex;
+  @apply justify-center;
+  @apply align-middle;
+
+  grid-area: board;
+}
+
+.board {
+  @apply p-4;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 1vw 1vw;
+  grid-gap: 1vh 1vh;
 }

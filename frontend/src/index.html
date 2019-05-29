@@ -6,18 +6,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Memory</title>
 </head>
-<body class="relative antialiased bg-gray-700 h-screen w-screen">
+<body>
 
-  <nav id="navbar" class="navbar">
-    <button id="newGameBtn" class="btn btn-blue">New game</button>
-    <button id="quitBtn" class="btn btn-blue">Quit</button>
-    <button id="stateBtn" class="btn btn-blue">State</button>
-    <button id="peekBtn" class="btn btn-blue">Peek 🤓</button>
-    <div id="timer"></div>
-  </nav>
+  <main id="screen" class="screen">
 
-  <div id="board" class="board">
-  </div>
+    <nav id="navbar" class="navbar">
+      <button id="newGameBtn" class="btn">New game</button>
+      <button id="quitBtn" class="btn">Quit</button>
+      <button id="stateBtn" class="btn">State</button>
+      <button id="peekBtn" class="btn">Peek 🤓</button>
+    </nav>
+    
+    <div class="board-wrapper">
+      <div id="board" class="board">
+      </div>
+    </div>
+    
+    <footer id='info' class="info flex flex-col justify-around text-4xl">
+      <div>
+        <div class="text-center">Score</div>
+        <div class="text-center" id="score">0</div>
+      </div>
+      <div>
+        <div class="text-center">Time</div>
+        <div class="text-center" id="timer">0</div>
+      </div>
+    </footer>
+
+  </main>
+
 
 </body>
 </html>
