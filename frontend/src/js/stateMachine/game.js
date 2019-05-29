@@ -12,7 +12,7 @@ const gameStates = {
       on: {
         CLICK_ON_CARD: {
           target: 's2',
-          cond: 'notSelected',
+          cond: 'selectable',
         },
       },
     },
