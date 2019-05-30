@@ -116,21 +116,21 @@ const playSuccessSound = () => {
   clickSoundEl.play();
 };
 
-const logContext = (context, event) => {
-  console.log('context :', context);
-};
+// const logContext = (context, event) => {
+//   console.log('context :', context);
+// };
 
-const logEvent = (context, event) => {
-  console.log('event :', event);
-};
+// const logEvent = (context, event) => {
+//   console.log('event :', event);
+// };
 
-const logEnd = () => {
-  console.log('END 😎');
-};
+// const logEnd = () => {
+//   console.log('END 😎');
+// };
 
-const logCards = (context) => {
-  console.table(context.cards);
-};
+// const logCards = (context) => {
+//   console.table(context.cards);
+// };
 
 export default {
   initCards,
@@ -145,10 +145,10 @@ export default {
   deselectCards,
   incrementTurn,
   addTimeBonus,
-  logEvent,
-  logContext,
-  logEnd,
-  logCards,
+  // logEvent,
+  // logContext,
+  // logEnd,
+  // logCards,
   playClickSound,
   showLeaderBoard,
 };

@@ -25,23 +25,9 @@ export const initNavbar = () => {
     service.send('QUIT_GAME');
   });
 
-  const stateBtn = navBarEl.querySelector('#stateBtn');
-  stateBtn.addEventListener('click', (e) => {
-    console.log('service.state.value :', service.state.value);
-  });
-
-  // const peekBtn = navBarEl.querySelector('#peekBtn');
-  // peekBtn.addEventListener('click', (e) => {
-  //   // const cards = service.state.context.cards.map(card => card.kind);
-  //   const cards = service.state.context.cards.map((card) => {
-  //     if (card.kind != 0) {
-  //       card.found = true;
-  //     }
-  //     return card;
-  //   });
-  //   console.table(cards);
-  //   service.state.context.cards = cards;
-  //   renderCards();
+  // const stateBtn = navBarEl.querySelector('#stateBtn');
+  // stateBtn.addEventListener('click', (e) => {
+  //   console.log('service.state.value :', service.state.value);
   // });
 };
 

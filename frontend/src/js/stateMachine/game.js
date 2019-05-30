@@ -9,7 +9,7 @@ const gameStates = {
       },
     },
     s0: {
-      onEntry: ['logEvent', 'incrementTurn'],
+      onEntry: ['incrementTurn'],
       on: {
         CLICK_ON_CARD: {
           target: 's1',
@@ -19,7 +19,6 @@ const gameStates = {
       onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
     },
     s1: {
-      onEntry: ['logEvent'],
       on: {
         CLICK_ON_CARD: {
           target: 's2',
@@ -29,7 +28,7 @@ const gameStates = {
       onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
     },
     s2: {
-      onEntry: ['logEvent', 'checkMatch'],
+      onEntry: ['checkMatch'],
       on: {
         CLICK_ON_CARD: 's0',
       },
@@ -38,10 +37,10 @@ const gameStates = {
         20: { target: 's0', cond: 'isMatched' },
         1000: { target: 's0' },
       },
-      onExit: ['logCards', 'logContext', 'deselectCards', 'setFaceUp', 'renderScore', 'renderBoard'],
+      onExit: ['deselectCards', 'setFaceUp', 'renderScore', 'renderBoard'],
     },
     endGame: {
-      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'renderBoard', 'logEnd'],
+      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'renderBoard'],
       type: 'final',
     },
   },

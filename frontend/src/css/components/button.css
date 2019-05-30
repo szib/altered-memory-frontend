@@ -5,6 +5,10 @@
   transition: all 0.2s;
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .btn:hover {
   @apply opacity-100;
   /* @apply bg-gray-100; */
