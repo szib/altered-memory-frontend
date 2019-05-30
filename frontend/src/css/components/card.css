@@ -1,6 +1,11 @@
 .card {
+  box-sizing: border-box;
   @apply bg-orange-600 text-orange-200;
-  @apply shadow-lg;
+  @apply border-2;
+  @apply border-orange-500;
+  
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+  @apply rounded-lg;
 
   background-repeat: no-repeat;
   background-size: contain;
@@ -11,10 +16,19 @@
   transition: all .4s ease;
 
   @apply cursor-pointer;
-
 }
 
 .card:hover {
   @apply bg-orange-500;
-  /* transform: scale(1.02); */
+  @apply border-orange-200;
+}
+
+.card-face-down {
+  @apply bg-blue-500;
+  @apply border-blue-400;
+}
+
+.card-face-down:hover {
+  @apply bg-blue-400;
+  @apply border-blue-100;
 }

@@ -53,6 +53,10 @@ const createCard = (card) => {
     : `background-image: url(${backImage})`;
   cardEl.style = cardStyle;
 
+  if (card.faceUp === false) {
+    cardEl.classList.add('card-face-down');
+  }
+
   cardEl.innerHTML = '';
   cardEl.dataset.id = card.id;
   cardEl.dataset.kind = card.kind;
