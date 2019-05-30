@@ -1,4 +1,5 @@
 import { renderCards, updateScore } from '../../UI';
+import renderLeaderboard from '../../UI/leaderboard';
 import clickSound from '../../../sound/click.mp3';
 import failSound from '../../../sound/fail.mp3';
 import successSound from '../../../sound/success.mp3';
@@ -93,6 +94,10 @@ const renderBoard = (context) => {
   renderCards(context.cards);
 };
 
+const showLeaderBoard = (context) => {
+  renderLeaderboard();
+};
+
 const playClickSound = () => {
   const clickSoundEl = document.createElement('audio');
   clickSoundEl.src = clickSound;
@@ -145,4 +150,5 @@ export default {
   logEnd,
   logCards,
   playClickSound,
+  showLeaderBoard,
 };

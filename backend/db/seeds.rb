@@ -6,5 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-p1 = Leaderboard.create(name: "Ivan", score: 1540, time: 29)
-p2 = Leaderboard.create(name: "Richie", score: 1300, time: 31)
+# p1 = Leaderboard.create(name: "Ivan", score: 1540, time: 29)
+# p2 = Leaderboard.create(name: "Richie", score: 1300, time: 31)
+
+10.times do |i|
+  Leaderboard.create(name: "AAA", score: (i+1) * 100, time: 0)
+end

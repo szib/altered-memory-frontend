@@ -1,4 +1,5 @@
 import { cardImages, backImage } from './images';
+import { getLeaderboard } from './leaderboard';
 
 let service;
 
@@ -67,8 +68,10 @@ const click = (e) => {
   service.send('CLICK_ON_CARD', { cardId: e.target.dataset.id });
 };
 
+
 export const renderCards = (cards) => {
   const board = document.querySelector('#board');
+  board.classList = ['board'];
   board.innerHTML = '';
   if (cards.length > 0) {
     for (let index = 0; index < cards.length; index++) {
