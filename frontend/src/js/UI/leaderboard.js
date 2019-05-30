@@ -10,12 +10,11 @@ const createRow = (user) => {
   const div = document.createElement('div');
   div.classList.add('leaderboard-item');
   div.innerHTML = `
-    <div>${user.name}</div>
-    <div>${user.score}</div>
+  <div>${user.name}</div>
+  <div>${user.score}</div>
   `;
   return div;
 };
-
 
 const renderLeaderboard = () => {
   const board = document.querySelector('#board');
@@ -24,10 +23,15 @@ const renderLeaderboard = () => {
   board.innerHTML = '<div class="text-orange-500 text-5xl">Leaderboard</div>';
   getLeaderboard()
     .then((data) => {
-      console.log('data :', data);
       data.forEach((user) => {
         board.appendChild(createRow(user));
       });
+    })
+    .catch((err) => {
+      const div = document.createElement('div');
+      div.classList.add('leaderboard-item');
+      div.innerHTML = '<div class="w-full text-center">No data from API. 😭</div>';
+      board.appendChild(div);
     });
 };
 
