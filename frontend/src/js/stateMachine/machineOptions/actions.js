@@ -1,4 +1,7 @@
 import { renderCards, updateScore } from '../../UI';
+import clickSound from '../../../sound/click.mp3';
+import failSound from '../../../sound/fail.mp3';
+import successSound from '../../../sound/success.mp3';
 
 const incrementScore = (context) => {
   context.score += 1;
@@ -33,12 +36,15 @@ const isMatch = (cards) => {
 
 const checkMatch = (context) => {
   if (isMatch(context.cards)) {
+    playSuccessSound();
     context.score += context.provisionalScore;
     context.provisionalScore = 110;
     context.cards.map((c) => {
       if (c.selected) c.found = true;
       return c;
     });
+  } else {
+    playFailSound();
   }
 };
 
@@ -87,6 +93,24 @@ const renderBoard = (context) => {
   renderCards(context.cards);
 };
 
+const playClickSound = () => {
+  const clickSoundEl = document.createElement('audio');
+  clickSoundEl.src = clickSound;
+  clickSoundEl.play();
+};
+
+const playFailSound = () => {
+  const clickSoundEl = document.createElement('audio');
+  clickSoundEl.src = failSound;
+  clickSoundEl.play();
+};
+
+const playSuccessSound = () => {
+  const clickSoundEl = document.createElement('audio');
+  clickSoundEl.src = successSound;
+  clickSoundEl.play();
+};
+
 const logContext = (context, event) => {
   console.log('context :', context);
 };
@@ -120,4 +144,5 @@ export default {
   logContext,
   logEnd,
   logCards,
+  playClickSound,
 };

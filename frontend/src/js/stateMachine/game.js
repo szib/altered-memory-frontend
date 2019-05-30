@@ -16,7 +16,7 @@ const gameStates = {
           cond: 'selectable',
         },
       },
-      onExit: ['selectCard', 'setFaceUp', 'renderBoard'],
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
     },
     s1: {
       onEntry: ['logEvent'],
@@ -26,7 +26,7 @@ const gameStates = {
           cond: 'selectable',
         },
       },
-      onExit: ['selectCard', 'setFaceUp', 'renderBoard'],
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
     },
     s2: {
       onEntry: ['logEvent', 'checkMatch'],
