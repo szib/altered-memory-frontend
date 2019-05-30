@@ -10,7 +10,7 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['resetContext', 'renderBoard'],
+      onEntry: ['resetContext', 'showLeaderBoard'],
       on: {
         NEW_GAME: 'init',
       },
