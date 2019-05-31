@@ -40,7 +40,7 @@ const gameStates = {
       onExit: ['deselectCards', 'setFaceUp', 'renderScore', 'renderBoard'],
     },
     endGame: {
-      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'renderBoard'],
+      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'sendResultToApi', 'renderBoard'],
       type: 'final',
     },
   },

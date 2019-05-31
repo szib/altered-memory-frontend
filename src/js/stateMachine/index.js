@@ -16,7 +16,7 @@ const machineConfig = {
       },
     },
     init: {
-      onEntry: ['initCards', 'shuffleCards'],
+      onEntry: ['askForName', 'initCards', 'shuffleCards'],
       on: {
         '': { target: 'running' },
       },
@@ -25,9 +25,14 @@ const machineConfig = {
       activities: ['ticking'],
       on: {
         QUIT_GAME: 'idle',
-        'done.state.game.running.endGame': 'idle',
+        'done.state.game.running.endGame': 'cleanUp',
       },
       ...gameStates,
+    },
+    cleanUp: {
+      after: {
+        2000: { target: 'idle' },
+      },
     },
   },
 };

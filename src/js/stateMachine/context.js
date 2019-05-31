@@ -1,4 +1,5 @@
 export default {
+  name: '',
   provisionalScore: 110,
   turn: 0,
   time: 0,

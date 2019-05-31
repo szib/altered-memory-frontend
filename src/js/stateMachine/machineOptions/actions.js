@@ -1,5 +1,5 @@
 import { renderCards, updateScore } from '../../UI';
-import renderLeaderboard from '../../UI/leaderboard';
+import { renderLeaderboard, postResult } from '../../UI/leaderboard';
 import clickSound from '../../../sound/click.mp3';
 import failSound from '../../../sound/fail.mp3';
 import successSound from '../../../sound/success.mp3';
@@ -116,6 +116,20 @@ const playSuccessSound = () => {
   clickSoundEl.play();
 };
 
+const askForName = (context) => {
+  const name = prompt('What\'s your name?', 'Player One');
+  context.name = name;
+};
+
+const sendResultToApi = (context) => {
+  const payload = {
+    name: context.name,
+    score: context.score,
+    time: context.time,
+  };
+  postResult(payload);
+};
+
 // const logContext = (context, event) => {
 //   console.log('context :', context);
 // };
@@ -149,6 +163,8 @@ export default {
   // logContext,
   // logEnd,
   // logCards,
+  askForName,
   playClickSound,
   showLeaderBoard,
+  sendResultToApi,
 };
