@@ -9,7 +9,7 @@ const incrementScore = (context) => {
 };
 
 const incrementTurn = (context) => {
-  context.provisionalScore -= 10;
+  context.provisionalScore = Math.round(context.provisionalScore * 0.9);
   context.turn += 1;
 };
 
