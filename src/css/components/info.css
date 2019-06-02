@@ -1,0 +1,9 @@
+.info {
+  @apply bg-gray-900;
+  @apply text-gray-100;
+  
+  /* @apply flex; */
+  /* @apply flex-col; */
+  /* @apply justify-center; */
+}
+

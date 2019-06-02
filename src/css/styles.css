@@ -1,0 +1,13 @@
+@import 'components/screen.css';
+@import 'components/board.css';
+@import 'components/card.css';
+@import 'components/button.css';
+@import 'components/navbar.css';
+@import 'components/info.css';
+@import 'components/leaderboard.css';
+
+/* IMPORT ALL CSS BEFORE TAILWIND */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
