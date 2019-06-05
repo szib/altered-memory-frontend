@@ -38,6 +38,6 @@ const machineConfig = {
 };
 
 const gameMachine = Machine(machineConfig, machineOptions, initialContext);
-const gameService = interpret(gameMachine).start();
+// const gameService = interpret(gameMachine).start();
 
-export default gameService;
+export default gameMachine;
