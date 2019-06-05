@@ -1,0 +1,13 @@
+.screen {
+  @apply w-screen;
+  @apply h-screen;
+  display: grid;
+
+  grid-template-columns: auto 200px;
+  grid-template-rows: 2fr 1fr;
+
+  grid-template-areas: 
+    "board info"
+    "board navbar";
+
+}

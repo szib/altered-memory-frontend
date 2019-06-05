@@ -1,0 +1,14 @@
+.leaderboard {
+  @apply flex;
+  @apply flex-col justify-center;
+  @apply h-full w-full;
+  align-items: center;
+}
+
+.leaderboard-item {
+  @apply text-gray-300;
+  @apply text-4xl;
+
+  @apply flex justify-between;
+  @apply w-2/4;
+}

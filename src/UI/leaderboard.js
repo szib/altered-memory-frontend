@@ -1,4 +1,4 @@
-import api from '../../../../src/api';
+import api from '../api';
 
 const URL = process.env.NODE_ENV === 'development'
   ? 'http://localhost:3000/results'
