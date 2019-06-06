@@ -1,5 +1,8 @@
-import { backImage, cardImages } from '../../images';
-
+// import { renderCards, updateScore } from '../../UI';
+// import { renderLeaderboard, postResult } from '../../UI/leaderboard';
+// import clickSound from '../../../sound/click.mp3';
+// import failSound from '../../../sound/fail.mp3';
+// import successSound from '../../../sound/success.mp3';
 
 const incrementScore = (context) => {
   context.score += 1;
@@ -49,15 +52,12 @@ const checkMatch = (context) => {
 const initCards = (context) => {
   const cards = [];
   for (let idx = 0; idx < 16; idx += 1) {
-    const kind = idx % 8;
     const card = {
       id: idx,
-      kind,
+      kind: idx % 8,
       selected: false,
       faceUp: false,
       found: false,
-      backImage,
-      frontImage: cardImages[kind]
     };
     cards.push(card);
   }

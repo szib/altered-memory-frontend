@@ -1,4 +1,4 @@
-import { Machine, interpret } from 'xstate';
+import { Machine } from 'xstate';
 
 import machineOptions from './machineOptions';
 import gameStates from './game';
@@ -16,7 +16,7 @@ const machineConfig = {
       },
     },
     init: {
-      onEntry: ['askForName', 'initCards', 'shuffleCards'],
+      onEntry: ['initCards', 'shuffleCards'],
       on: {
         '': { target: 'running' },
       },
@@ -38,6 +38,5 @@ const machineConfig = {
 };
 
 const gameMachine = Machine(machineConfig, machineOptions, initialContext);
-// const gameService = interpret(gameMachine).start();
 
 export default gameMachine;
