@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 import Item from './InfoPanelItem';
 
-const InfoPanel = ({ className, context }) => {
+const InfoPanel = ({ className, current }) => {
+  const { context } = current;
   const { score, turn } = context;
   return (
     <div className={className}>
@@ -14,19 +14,6 @@ const InfoPanel = ({ className, context }) => {
       <Item title="Turn" value={turn} />
     </div>
   );
-};
-
-InfoPanel.propTypes = {
-  context: PropTypes.shape({
-    name: PropTypes.string,
-    provisionalScore: PropTypes.number,
-    turn: PropTypes.number,
-    time: PropTypes.number,
-    score: PropTypes.number,
-    cards: PropTypes.array,
-    timerInterval: PropTypes.number,
-  }).isRequired,
-  className: PropTypes.string.isRequired
 };
 
 const StyledInfoPanel = styled(InfoPanel)`

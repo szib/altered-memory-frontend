@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 import Card from './Card';
 
-class Board extends Component {
-  clickOnCardHandler = (id) => {
-    const { send } = this.props;
+// eslint-disable-next-line react/prop-types
+const Board = ({ current, send, className }) => {
+  const { context } = current;
+  const { cards } = context;
+  
+  const clickOnCardHandler = (id) => {
     send('CLICK_ON_CARD', { cardId: id });
-  }
+  };
 
-  render() {
-    const { className, context } = this.props; 
-    const { cards } = context;
+  const cardElements = cards.map(card => (
+    <Card 
+      key={card.id} 
+      card={card} 
+      clickOnCardHandler={() => clickOnCardHandler(card.id)} 
+    />
+      ));
 
-    const cardElements = cards.map(card => (
-      <Card 
-        key={card.id} 
-        card={card} 
-        clickOnCardHandler={this.clickOnCardHandler} 
-      />
-        ));
-    
-    return (
-      <div className={className}>
-        {cardElements}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={className}>
+      {cardElements}
+    </div>
+  );
+};
 
 const StyledBoard = styled(Board)`
   box-sizing: border-box;

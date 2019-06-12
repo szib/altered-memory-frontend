@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
@@ -12,11 +11,6 @@ const ControlPanel = ({ className, send }) => (
     <Button clickHandler={() => send('QUIT_GAME')}>Quit</Button>
   </div>
   );
-
-ControlPanel.propTypes = {
-  className: PropTypes.string.isRequired,
-  send: PropTypes.func.isRequired
-};
 
 const StyledControlPanel = styled(ControlPanel)`
   grid-area: navbar;

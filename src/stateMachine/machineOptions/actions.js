@@ -1,7 +1,5 @@
 import { backImage, cardImages } from '../../images';
 
-import initialContext from '../context';
-
 const incrementScore = (context) => {
   context.score += 1;
 };
@@ -76,7 +74,9 @@ const shuffleCards = (context) => {
 };
 
 const resetContext = (context) => {
-  context = { ...initialContext };
+  context.turn = 0;
+  context.score = 0;
+  context.cards = [];
 };
 
 const playClickSound = () => {

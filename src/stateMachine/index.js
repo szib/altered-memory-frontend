@@ -10,13 +10,13 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['resetContext'],
+      onEntry: ['resetContext', 'initCards'],
       on: {
         NEW_GAME: 'init',
       },
     },
     init: {
-      onEntry: ['initCards', 'shuffleCards', 'showCards'],
+      onEntry: ['shuffleCards', 'showCards'],
       after: {
         4000: { target: 'running' },
       },
@@ -37,6 +37,6 @@ const machineConfig = {
   },
 };
 
-const gameMachine = Machine(machineConfig, machineOptions, initialContext);
+const gameMachine = Machine(machineConfig, machineOptions, { ...initialContext });
 
 export default gameMachine;

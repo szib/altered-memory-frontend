@@ -1,35 +1,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
-class Card extends PureComponent {
-  render() {
-    console.log('Card this.props', this.props);
-    const { className, card, clickOnCardHandler } = this.props;
-    return (
-      <div className={className} onClick={() => clickOnCardHandler(card.id)} />
-    );
-  }
-}
-
-// const Card = ({ className, card, clickOnCardHandler }) => 
-//   <div className={className} onClick={() => clickOnCardHandler(card.id)} />;
-  
-Card.propTypes = {
-  className: PropTypes.string.isRequired,
-  card: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    kind: PropTypes.number.isRequired,
-    selected: PropTypes.bool.isRequired,
-    faceUp: PropTypes.bool.isRequired,
-    found: PropTypes.bool.isRequired,
-  }).isRequired,
-  clickOnCardHandler: PropTypes.func.isRequired
-};
+// eslint-disable-next-line react/prop-types
+const Card = ({ className, clickOnCardHandler }) => 
+  <div className={className} onClick={clickOnCardHandler} />;
 
 const StyledCard = styled(Card)`
   box-sizing: border-box;
