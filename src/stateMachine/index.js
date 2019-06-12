@@ -10,19 +10,19 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['resetContext', 'showLeaderBoard'],
+      onEntry: ['resetContext'],
       on: {
         NEW_GAME: 'init',
       },
     },
     init: {
-      onEntry: ['initCards', 'shuffleCards'],
-      on: {
-        '': { target: 'running' },
+      onEntry: ['initCards', 'shuffleCards', 'showCards'],
+      after: {
+        4000: { target: 'running' },
       },
+      onExit: ['hideCards']
     },
     running: {
-      activities: ['ticking'],
       on: {
         QUIT_GAME: 'idle',
         'done.state.game.running.endGame': 'cleanUp',

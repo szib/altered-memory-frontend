@@ -11,7 +11,6 @@ const InfoPanel = ({ className, context }) => {
   return (
     <div className={className}>
       <Item title="Score" value={score} />
-      <Item title="Time" value={10} />
       <Item title="Turn" value={turn} />
     </div>
   );
@@ -26,7 +25,6 @@ InfoPanel.propTypes = {
     score: PropTypes.number,
     cards: PropTypes.array,
     timerInterval: PropTypes.number,
-    renderInterval: PropTypes.number,
   }).isRequired,
   className: PropTypes.string.isRequired
 };

@@ -1,5 +1,6 @@
 import { backImage, cardImages } from '../../images';
 
+import initialContext from '../context';
 
 const incrementScore = (context) => {
   context.score += 1;
@@ -74,28 +75,8 @@ const shuffleCards = (context) => {
   context.cards = cards;
 };
 
-const addTimeBonus = (context) => {
-  context.score = parseInt(context.score * (60 / context.time), 10);
-};
-
-
 const resetContext = (context) => {
-  context.score = 0;
-  context.time = 0;
-  context.cards = [];
-  context.timerInterval = 1000;
-};
-
-const renderScore = (context) => {
-  // updateScore(context.score);
-};
-
-const renderBoard = (context) => {
-  // renderCards(context.cards);
-};
-
-const showLeaderBoard = (context) => {
-  // renderLeaderboard();
+  context = { ...initialContext };
 };
 
 const playClickSound = () => {
@@ -116,55 +97,35 @@ const playSuccessSound = () => {
   // clickSoundEl.play();
 };
 
-const askForName = (context) => {
-  const name = prompt('What\'s your name?', 'Player One');
-  context.name = name;
+
+const showCards = (context) => {
+  context.cards.map((card) => {
+    card.faceUp = true;
+    return card;
+  });
 };
 
-const sendResultToApi = (context) => {
-  const payload = {
-    name: context.name,
-    score: context.score,
-    time: context.time,
-  };
-  // postResult(payload);
+const hideCards = (context) => {
+  context.cards.map((card) => {
+    card.faceUp = false;
+    return card;
+  });
 };
-
-// const logContext = (context, event) => {
-//   console.log('context :', context);
-// };
-
-// const logEvent = (context, event) => {
-//   console.log('event :', event);
-// };
-
-// const logEnd = () => {
-//   console.log('END 😎');
-// };
-
-// const logCards = (context) => {
-//   console.table(context.cards);
-// };
 
 export default {
+  // game.js
+  incrementTurn,
+  playClickSound,
+  selectCard,
+  deselectCards,
+  setFaceUp,
+
+  // machine/indexedDB.js
+  resetContext,
   initCards,
   shuffleCards,
   incrementScore,
-  resetContext,
-  renderBoard,
-  renderScore,
-  selectCard,
   checkMatch,
-  setFaceUp,
-  deselectCards,
-  incrementTurn,
-  addTimeBonus,
-  // logEvent,
-  // logContext,
-  // logEnd,
-  // logCards,
-  askForName,
-  playClickSound,
-  showLeaderBoard,
-  sendResultToApi,
+  showCards,
+  hideCards,
 };

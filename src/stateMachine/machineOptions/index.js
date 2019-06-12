@@ -1,5 +1,4 @@
 import gameActions from './actions';
-// import gameActivities from './activities';
 import gameGuards from './guards';
 
 export default {
@@ -11,7 +10,4 @@ export default {
     ...gameActions,
   },
 
-  // activities: {
-  //   ...gameActivities,
-  // },
 };
