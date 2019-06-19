@@ -23,6 +23,7 @@ const machineConfig = {
       onExit: ['hideCards']
     },
     running: {
+      activities: ['ticking'],
       on: {
         QUIT_GAME: 'idle',
         'done.state.game.running.endGame': 'cleanUp',

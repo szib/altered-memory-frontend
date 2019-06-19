@@ -4,4 +4,5 @@ export default {
   turn: 0,
   score: 0,
   cards: [],
+  timerInterval: 1000,
 };

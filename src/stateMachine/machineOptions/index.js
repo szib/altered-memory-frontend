@@ -1,5 +1,6 @@
 import gameActions from './actions';
 import gameGuards from './guards';
+import gameActivities from './activities';
 
 export default {
   guards: {
@@ -9,5 +10,9 @@ export default {
   actions: {
     ...gameActions,
   },
+
+  activities: {
+    ...gameActivities,
+  }
 
 };
