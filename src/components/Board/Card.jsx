@@ -23,7 +23,6 @@ const StyledCard = styled(Card)`
   color: ${props => props.color};
 
   ${props => (props.card.faceUp ? tw`bg-orange-400` : tw`bg-blue-400`)}
-  ${props => (props.card.faceUp ? tw`bg-orange-400` : tw`bg-blue-400`)}
   
   background-image: url(${props => (props.card.faceUp ? props.card.frontImage : props.card.backImage)});
 
