@@ -8,9 +8,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "styled-components": "^4.2.1",
+    "styled-components": "^4.3.1",
     "tailwind.macro": "^1.0.0-alpha.10",
-    "xstate": "^4.6.0"
+    "xstate": "^4.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
