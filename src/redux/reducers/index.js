@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import grid from './gridReducer';
+import timer from './timerReducer';
 
 const reducer = combineReducers({
-  grid
+  grid,
+  timer
 });
 
 export default reducer;
