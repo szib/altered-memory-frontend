@@ -19,7 +19,7 @@ const App = ({ className }) => {
       <InfoPanel current={current} />
       <ControlPanel current={current} send={send} />
     </div>
-    );
+  );
 };
 
 const StyledApp = styled(App)`
@@ -29,9 +29,9 @@ const StyledApp = styled(App)`
   grid-template-columns: auto 200px;
   grid-template-rows: 2fr 1fr;
 
-  grid-template-areas: 
-    "board info"
-    "board navbar";
+  grid-template-areas:
+    'board info'
+    'board navbar';
 `;
 
 export default StyledApp;
