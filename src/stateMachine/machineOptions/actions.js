@@ -1,5 +1,9 @@
 import store from '../../redux/store';
 import { timerResetAction } from '../../redux/actions/timerActions';
+import {
+  initCardsAction,
+  shuffleCardsAction
+} from '../../redux/actions/gridActions';
 import { backImage, cardImages } from '../../images';
 
 const incrementScore = context => {
@@ -49,6 +53,7 @@ const checkMatch = context => {
 };
 
 const initCards = context => {
+  store.dispatch(initCardsAction());
   const cards = [];
   for (let idx = 0; idx < 16; idx += 1) {
     const kind = idx % 8;
@@ -67,6 +72,7 @@ const initCards = context => {
 };
 
 const shuffleCards = context => {
+  store.dispatch(shuffleCardsAction());
   // https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
   const cards = [...context.cards];
   for (let i = cards.length - 1; i > 0; i -= 1) {
