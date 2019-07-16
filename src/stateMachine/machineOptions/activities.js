@@ -1,9 +1,9 @@
 import store from '../../redux/store';
-import { tick } from '../../redux/actions/timerActions';
+import { tickAction } from '../../redux/actions/timerActions';
 
 const ticking = (context, event) => {
   const interval = setInterval(() => {
-    store.dispatch(tick());
+    store.dispatch(tickAction());
     console.log('tick...');
   }, context.timerInterval);
   return () => clearInterval(interval);

@@ -1,13 +1,13 @@
 export const TICK = 'TICK';
 export const TIMER_RESET = 'TIMER_RESET';
 
-export const tick = () => {
+export const tickAction = () => {
   return {
     type: TICK
   };
 };
 
-export const timerReset = () => {
+export const timerResetAction = () => {
   return {
     type: TIMER_RESET
   };

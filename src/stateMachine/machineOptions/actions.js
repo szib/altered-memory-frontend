@@ -1,5 +1,5 @@
 import store from '../../redux/store';
-import { timerReset } from '../../redux/actions/timerActions';
+import { timerResetAction } from '../../redux/actions/timerActions';
 import { backImage, cardImages } from '../../images';
 
 const incrementScore = context => {
@@ -80,7 +80,7 @@ const resetContext = context => {
   context.turn = 0;
   context.score = 0;
   context.cards = [];
-  store.dispatch(timerReset());
+  store.dispatch(timerResetAction());
 };
 
 const playClickSound = () => {
