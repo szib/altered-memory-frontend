@@ -1,13 +1,22 @@
-// CSS
-import './css/styles.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// JAVASCRIPT
-import GameService from './js/stateMachine';
-import * as UI from './js/UI';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
+import 'normalize.css';
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('%cDOM loaded. Yaaayy...' + '%c¯\\_(ツ)_/¯', 'color: #0f0', 'color: yellow');
-  const gameService = GameService.start();
-  UI.startWith(gameService);
-});
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

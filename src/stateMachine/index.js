@@ -1,4 +1,4 @@
-import { Machine, interpret } from 'xstate';
+import { Machine } from 'xstate';
 
 import machineOptions from './machineOptions';
 import gameStates from './game';
@@ -10,16 +10,17 @@ const machineConfig = {
 
   states: {
     idle: {
-      onEntry: ['resetContext', 'showLeaderBoard'],
+      onEntry: ['resetContext', 'initCards'],
       on: {
         NEW_GAME: 'init',
       },
     },
     init: {
-      onEntry: ['askForName', 'initCards', 'shuffleCards'],
-      on: {
-        '': { target: 'running' },
+      onEntry: ['shuffleCards', 'showCards'],
+      after: {
+        4000: { target: 'running' },
       },
+      onExit: ['hideCards']
     },
     running: {
       activities: ['ticking'],
@@ -37,7 +38,6 @@ const machineConfig = {
   },
 };
 
-const gameMachine = Machine(machineConfig, machineOptions, initialContext);
-const gameService = interpret(gameMachine).start();
+const gameMachine = Machine(machineConfig, machineOptions, { ...initialContext });
 
-export default gameService;
+export default gameMachine;

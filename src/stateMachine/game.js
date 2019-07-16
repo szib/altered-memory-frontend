@@ -3,7 +3,6 @@ const gameStates = {
   initial: 'init',
   states: {
     init: {
-      onEntry: ['renderBoard', 'renderScore'],
       on: {
         '': 's0',
       },
@@ -16,7 +15,7 @@ const gameStates = {
           cond: 'selectable',
         },
       },
-      onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
     },
     s1: {
       on: {
@@ -25,7 +24,7 @@ const gameStates = {
           cond: 'selectable',
         },
       },
-      onExit: ['playClickSound', 'selectCard', 'setFaceUp', 'renderBoard'],
+      onExit: ['playClickSound', 'selectCard', 'setFaceUp'],
     },
     s2: {
       onEntry: ['checkMatch'],
@@ -37,10 +36,9 @@ const gameStates = {
         20: { target: 's0', cond: 'isMatched' },
         1000: { target: 's0' },
       },
-      onExit: ['deselectCards', 'setFaceUp', 'renderScore', 'renderBoard'],
+      onExit: ['deselectCards', 'setFaceUp'],
     },
     endGame: {
-      onEntry: ['setFaceUp', 'addTimeBonus', 'renderScore', 'sendResultToApi', 'renderBoard'],
       type: 'final',
     },
   },
